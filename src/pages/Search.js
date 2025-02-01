@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getBreeds, searchDogs, addFavorite, removeFavorite, fetchFavoriteDogs } from '../redux/slices/dogsSlice';
+import { getBreeds, searchDogs, addFavorite, removeFavorite, fetchFavoriteDogs, matchDog } from '../redux/slices/dogsSlice';
 import "../styles/Search.scss";
 
 const Search = () => {
   const dispatch = useDispatch();
   const { breeds, dogs, favorites, favoriteDetails } = useSelector((state) => state.dogs);
+  const { match } = useSelector((state) => state.dogs);
 
   // UI States
   const [selectedBreed, setSelectedBreed] = useState("");
@@ -132,6 +133,14 @@ const Search = () => {
           </div>
         ))}
       </div>
+
+      <br />
+      {favoriteDetails.length > 0 && (
+        <button onClick={() => dispatch(matchDog(favorites))}>
+          Find a Match
+        </button>
+      )}
+      {match && <p>Your perfect match is: {match}</p>}
     </div>
   );
 };

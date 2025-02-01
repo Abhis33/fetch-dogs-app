@@ -31,6 +31,20 @@ $border-color: #ddd;
     margin-bottom: 10px;
   }
 
+  button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: $primary-color;
+    color: white;
+
+    &:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+  }
+
   .sort-button,
   .search-button {
     width: 100%;
