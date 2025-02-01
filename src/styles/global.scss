@@ -1,0 +1,12 @@
+// Global button style
+.button {
+  background: #ff9800;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    background: darken(#ff9800, 10%);
+  }
+}
