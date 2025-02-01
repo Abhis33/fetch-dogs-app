@@ -7,6 +7,14 @@ export const getBreeds = createAsyncThunk("dogs/getBreeds", async () => {
   return response.data;
 });
 
+export const fetchFavoriteDogs = createAsyncThunk(
+  'dogs/fetchFavoriteDogs',
+  async (favoriteIds) => {
+    const response = await axiosInstance.post('/dogs', favoriteIds);
+    return response.data;
+  }
+);
+
 // Fetch dogs based on filters
 export const searchDogs = createAsyncThunk("dogs/search", async (filters) => {
   const response = await axiosInstance.get("/dogs/search", { params: filters });
@@ -22,12 +30,15 @@ export const matchDog = createAsyncThunk("dogs/match", async (favoriteIds) => {
 
 const dogsSlice = createSlice({
   name: "dogs",
-  initialState: { breeds: [], dogs: [], favorites: [], match: null },
+  initialState: { breeds: [], dogs: [], favorites: [], favoriteDetails: [], match: null },
   reducers: {
     addFavorite: (state, action) => {
       if (!state.favorites.includes(action.payload)) {
         state.favorites.push(action.payload);
       }
+    },
+    removeFavorite: (state, action) => {
+      state.favorites = state.favorites.filter((id) => id !== action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -40,8 +51,11 @@ const dogsSlice = createSlice({
     builder.addCase(matchDog.fulfilled, (state, action) => {
       state.match = action.payload;
     });
+    builder.addCase(fetchFavoriteDogs.fulfilled, (state, action) => {
+      state.favoriteDetails = action.payload;
+    });
   },
 });
 
-export const { addFavorite } = dogsSlice.actions;
+export const { addFavorite, removeFavorite } = dogsSlice.actions;
 export default dogsSlice.reducer;

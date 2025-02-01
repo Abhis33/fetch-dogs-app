@@ -48,7 +48,7 @@ $border-color: #ddd;
     }
   }
 
-  .dogs-list {
+  .dogs-list, .favorites-list {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
