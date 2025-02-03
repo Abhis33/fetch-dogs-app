@@ -34,6 +34,7 @@ A React-based web application that allows users to search, filter, and favorite 
 1️⃣ Login Page
 
 -    Users enter name & email to authenticate.
+https://github.com/Abhis33/fetch-dogs-app/blob/master/screenshots/login.png?raw=true
 
 2️⃣ Search Page
 
@@ -42,7 +43,12 @@ A React-based web application that allows users to search, filter, and favorite 
 -    Paginate through dogs
 -    Add/Remove favorites
 
+https://github.com/Abhis33/fetch-dogs-app/blob/master/screenshots/search-1.png?raw=true
+
+
 3️⃣ Favorites Section
 
 -    View favorite dogs
 -    Click "Find a Match" to generate the best match
+
+https://github.com/Abhis33/fetch-dogs-app/blob/master/screenshots/search-fav-section.png?raw=true
